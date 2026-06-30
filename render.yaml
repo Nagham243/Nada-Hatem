@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: nada-hatem-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
