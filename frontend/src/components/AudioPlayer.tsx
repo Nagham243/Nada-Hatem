@@ -31,7 +31,7 @@ const AudioPlayer: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-40">
       <audio 
         ref={audioRef} 
-        src="/song.mp3" 
+        src={`${import.meta.env.BASE_URL}song.mp3`}
         loop 
         preload="auto"
       />
