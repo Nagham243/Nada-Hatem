@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLang } from './context/LanguageContext';
 import { Heart } from 'lucide-react';
 import GoldenLightReveal from './components/GoldenLightReveal';
