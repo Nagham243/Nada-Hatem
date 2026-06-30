@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Send } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
+import { API_BASE_URL } from '../config';
 
 interface Message {
   id: number;
@@ -19,7 +20,7 @@ const MessageBoard: React.FC = () => {
 
   const fetchMessages = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/messages');
+      const response = await axios.get(`${API_BASE_URL}/api/messages`);
       setMessages(response.data);
     } catch (error) {
       console.error('Error fetching messages:', error);
@@ -36,7 +37,7 @@ const MessageBoard: React.FC = () => {
     
     setIsSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/messages', {
+      await axios.post(`${API_BASE_URL}/api/messages`, {
         name,
         content
       });

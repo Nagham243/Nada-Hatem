@@ -3,6 +3,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import axios from 'axios';
 import { Eraser, Send, Palette } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
+import { API_BASE_URL } from '../config';
 
 interface Drawing {
   id: number;
@@ -21,7 +22,7 @@ const DrawingWall: React.FC = () => {
 
   const fetchDrawings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/drawings');
+      const response = await axios.get(`${API_BASE_URL}/api/drawings`);
       setDrawings(response.data);
     } catch (error) {
       console.error('Error fetching drawings:', error);
@@ -43,7 +44,7 @@ const DrawingWall: React.FC = () => {
     const dataUrl = sigPad.current?.getTrimmedCanvas().toDataURL('image/png');
     
     try {
-      await axios.post('http://localhost:5000/api/drawings', {
+      await axios.post(`${API_BASE_URL}/api/drawings`, {
         image_data: dataUrl
       });
       clear();
